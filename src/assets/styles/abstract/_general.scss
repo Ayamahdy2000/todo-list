@@ -12,7 +12,7 @@ body {
     border-radius: 6px;
     height: max-content;
     font-family: $font-regular;
-
+    color: #000;
     @include font-size(18px, 16px, 16px, 14px);
 
     &.generic-btn--main-color {
