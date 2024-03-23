@@ -71,3 +71,10 @@ body {
     font-family: $font-medium;
     @include font-size(16px, 14px, 14px, 12px);
 }
+
+.vc-popover-content-wrapper{
+    .is-today{
+        background-color: #ddd;
+        border-radius: 50%;
+    }
+}
