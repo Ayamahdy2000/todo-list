@@ -108,6 +108,7 @@ export default {
       if (!this.v.$error) {
         this.$emit("addTask", this.state.form);
         this.state.form = {}
+        this.v.$reset()
       }
     },
   },
