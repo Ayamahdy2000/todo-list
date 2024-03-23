@@ -7,32 +7,43 @@
           Manage your habits, reminders, events, activites.
         </p>
       </div>
-      <button class="generic-btn d-md-block d-flex ms-auto align-items-center" @click="state.showTask = true">
+      <button
+        class="generic-btn d-md-block d-flex ms-auto align-items-center"
+        @click="state.showTask = true"
+      >
         <i class="icon-plus"></i> New Task
       </button>
     </header>
     <main>
-      <add-task @addTask="addTask" @closeAddTask="closeAddTask" v-if="state.showTask"/>
-      <generic-tabs v-if="state.tasks.length > 0" @getTab="getTab">
-        <generic-select
-          :options="state.options"
-          placeholder="Sort By"
-          @sortVal="sortVal"
-        />
-        <div class="row">
-          <div
-            class="col-lg-6 col-md-12"
-            v-for="(task, index) in state.tasks"
-            :key="index"
-          >
-            <task-card
-              :task="task"
-              :index="index"
-              @isCompleted="getStatus"
-              @deleteTask="deleteTask"
-            />
+      <add-task
+        @addTask="addTask"
+        @closeAddTask="closeAddTask"
+        v-if="state.showTask"
+      />
+      <generic-tabs v-if="state.tasks.length > 0">
+        <template v-slot="slotProps">
+          <generic-select
+            :options="state.options"
+            placeholder="Sort By"
+            @sortVal="sortVal"
+          />
+          <div class="row">
+            <div
+              class="col-lg-6 col-md-12"
+              v-for="(task, index) in slotProps.data != undefind
+                ? state.tasks.filter((el) => el.isComplete == slotProps.data)
+                : state.tasks"
+              :key="index"
+            >
+              <task-card
+                :task="task"
+                :index="index"
+                @isCompleted="getStatus"
+                @deleteTask="deleteTask"
+              />
+            </div>
           </div>
-        </div>
+        </template>
       </generic-tabs>
       <empty-state
         v-if="state.tasks.length == 0 && !state.showTask"
@@ -94,7 +105,7 @@ export default {
       failed: false,
       text: "",
       isShow: false,
-      showTask: false
+      showTask: false,
     });
     const getStatus = (val) => {
       state.tasks[val.index].isComplete = val.isComplete;
@@ -128,34 +139,26 @@ export default {
     const closed = () => {
       state.isShow = false;
     };
-    const closeAddTask = () =>{
-      state.showTask = false
-    }
-    const getTab = (val) => {
-      let tasks = localStorage.myTasks ? JSON.parse(localStorage.myTasks) : [];
-      if (val == 1) {
-        state.tasks = tasks;
-      } else if (val == 2) {
-        state.tasks = tasks.filter((el) => el.isComplete == true);
-      } else {
-        state.tasks = tasks.filter((el) => !el.isComplete);
-      }
+    const showTaskSec = () => {
+      state.showTask = true;
     };
+    const closeAddTask = () => {
+      state.showTask = false;
+    };
+
     const addTask = (val) => {
       let length = state.tasks.length;
 
       state.tasks.push({
-        id: state.tasks[length - 1] ? state.tasks[length - 1].id + 1 : 0 ,
+        id: state.tasks[length - 1] ? state.tasks[length - 1].id + 1 : 0,
         isComplete: false,
         desc: val.desc,
         title: val.title,
         date: val.date,
       });
-      localStorage.myTasks = JSON.stringify(state.tasks)
+      localStorage.myTasks = JSON.stringify(state.tasks);
     };
-    const showTaskSec = () =>{
-      state.showTask = true
-    }
+
     return {
       state,
       getStatus,
@@ -163,13 +166,14 @@ export default {
       closeAddTask,
       deleteTask,
       closed,
-      getTab,
       sortVal,
       addTask,
     };
   },
   mounted() {
-    this.state.tasks = localStorage.myTasks? JSON.parse(localStorage.myTasks) : [];
+    this.state.tasks = localStorage.myTasks
+      ? JSON.parse(localStorage.myTasks)
+      : [];
   },
 };
 </script>

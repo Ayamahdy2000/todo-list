@@ -10,7 +10,7 @@
         role="tab"
         aria-controls="all"
         aria-selected="true"
-        @click="getTab(1)"
+   
       >
         All
       </button>
@@ -25,7 +25,7 @@
         role="tab"
         aria-controls="completed"
         aria-selected="false"
-        @click="getTab(2)"
+       
       >
         Completed
       </button>
@@ -40,7 +40,7 @@
         role="tab"
         aria-controls="inCompleted"
         aria-selected="false"
-        @click="getTab(3)"
+      
       >
         Incompleted
       </button>
@@ -53,7 +53,7 @@
       role="tabpanel"
       aria-labelledby="all-tab"
     >
-      <slot></slot>
+      <slot ></slot>
     </div>
     <div
       class="tab-pane fade"
@@ -61,7 +61,7 @@
       role="tabpanel"
       aria-labelledby="completed-tab"
     >
-      <slot></slot>
+      <slot :data="true"></slot>
     </div>
     <div
       class="tab-pane fade"
@@ -69,7 +69,7 @@
       role="tabpanel"
       aria-labelledby="inCompleted-tab"
     >
-      <slot></slot>
+      <slot :data="false"></slot>
     </div>
   </div>
 </template>
