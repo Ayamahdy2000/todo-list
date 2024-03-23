@@ -110,7 +110,6 @@ export default {
     const getStatus = (val) => {
       state.tasks.find(el => el.id == val.index).isComplete = val.isComplete;
       localStorage.myTasks = JSON.stringify(state.tasks);
-      state.tasks = JSON.parse(localStorage.myTasks)
     };
     const sortVal = (val) => {
       if (val.id == 0) {
