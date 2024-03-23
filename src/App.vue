@@ -145,7 +145,7 @@ export default {
       let length = state.tasks.length;
 
       state.tasks.push({
-        id: state.tasks[length - 1].id ? state.tasks[length - 1].id + 1 : 0 ,
+        id: state.tasks[length - 1] ? state.tasks[length - 1].id + 1 : 0 ,
         isComplete: false,
         desc: val.desc,
         title: val.title,
