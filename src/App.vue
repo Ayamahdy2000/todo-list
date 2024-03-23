@@ -35,7 +35,7 @@
         </div>
       </generic-tabs>
       <empty-state
-        v-else
+        v-if="state.tasks.length == 0 && !state.showTask"
         image="Add-tasks"
         note="Start adding tasks to stay organized and productive!"
         text="Your to-do list is currently empty"

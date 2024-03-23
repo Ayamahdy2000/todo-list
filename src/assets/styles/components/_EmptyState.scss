@@ -9,13 +9,26 @@
     }
     h4{
         font-family: $font-semiBold;
-        @include font-size(26px,24px,22px,20px);
+        @include font-size(26px,24px,22px,18px);
         margin-bottom: 6px;
         text-transform: capitalize;
+        text-align: center;
     }
     p{
         font-family: $font-regular;
-        @include font-size(20px,18px,16px,16px);
+        @include font-size(20px,18px,16px,14px);
         color: var(--grey);
+        text-align: center;
+    }
+}
+
+
+@media (max-width: 767px){
+    .empty-state{
+        img{
+            width: 250px;
+            margin-bottom: 6px;
+            
+        }
     }
 }
