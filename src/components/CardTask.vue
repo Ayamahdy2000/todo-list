@@ -27,8 +27,8 @@ let isTomorrow = require("dayjs/plugin/isTomorrow");
 dayjs.extend(isTomorrow);
 dayjs.extend(isToday);
 export default {
-  props: ["task", "index"],
-  emits: ["isCompleted", "deleteTask"],
+  props: ["task", "index" ,"modelValue"],
+  emits: [ "deleteTask" ,"update:modelValue"],
   setup(props, { emit }) {
     const state = reactive({ isComplete: props.task.isComplete });
     const handleDate = computed(() => {
@@ -52,7 +52,7 @@ export default {
     watch(
       () => state.isComplete,
       () => {
-        emit("isCompleted", {
+        emit("update:modelValue", {
           index: props.task.id,
           isComplete: state.isComplete,
         });

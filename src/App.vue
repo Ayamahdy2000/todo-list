@@ -38,7 +38,8 @@
               <task-card
                 :task="task"
                 :index="index"
-                @isCompleted="getStatus"
+                v-model="state.status"
+                :key="state.key"
                 @deleteTask="deleteTask"
               />
             </div>
@@ -64,7 +65,7 @@
 </template>
 
 <script>
-import { reactive } from "vue";
+import { reactive, watch } from "vue";
 import TaskCard from "./components/CardTask.vue";
 import GenericToast from "./components/GenericToast.vue";
 import EmptyState from "./components/EmptyState.vue";
@@ -106,11 +107,15 @@ export default {
       text: "",
       isShow: false,
       showTask: false,
+      status: null,
+      key: 0
     });
-    const getStatus = (val) => {
-      state.tasks.find(el => el.id == val.index).isComplete = val.isComplete;
+   
+    watch(()=>state.status , (val) =>{
+     state.tasks.find(el => el.id == val.index).isComplete = val.isComplete;
       localStorage.myTasks = JSON.stringify(state.tasks);
-    };
+      state.key++
+    })
     const sortVal = (val) => {
       if (val.id == 0) {
         state.tasks = state.tasks.sort(function (a, b) {
@@ -161,7 +166,6 @@ export default {
 
     return {
       state,
-      getStatus,
       showTaskSec,
       closeAddTask,
       deleteTask,
