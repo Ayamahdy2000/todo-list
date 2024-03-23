@@ -53,7 +53,7 @@ export default {
       () => state.isComplete,
       () => {
         emit("isCompleted", {
-          index: props.index,
+          index: props.task.id,
           isComplete: state.isComplete,
         });
       }
