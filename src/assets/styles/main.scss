@@ -1,0 +1,15 @@
+//Abstract 
+@import "./abstract/mixin";
+@import "./abstract/fonts";
+@import "./abstract/variable";
+@import "./abstract/icomoon";
+@import "./abstract/general";
+//components
+@import "./components/CardTask";
+@import "./components/GenericToast";
+@import "./components/EmptyState";
+@import "./components/GenericTabs";
+@import "./components/AddTask";
+
+//pages
+@import "./pages/index";

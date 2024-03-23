@@ -1,0 +1,21 @@
+.empty-state{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img{
+        width: 450px;
+        margin-bottom: 6px;
+        
+    }
+    h4{
+        font-family: $font-semiBold;
+        @include font-size(26px,24px,22px,20px);
+        margin-bottom: 6px;
+        text-transform: capitalize;
+    }
+    p{
+        font-family: $font-regular;
+        @include font-size(20px,18px,16px,16px);
+        color: var(--grey);
+    }
+}

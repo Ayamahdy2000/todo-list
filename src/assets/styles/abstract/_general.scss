@@ -1,0 +1,73 @@
+body {
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--bg);
+}
+
+.generic-btn {
+    background-color: #fff;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 10px 26px 12px;
+    border-radius: 6px;
+    height: max-content;
+    font-family: $font-regular;
+
+    @include font-size(18px, 16px, 16px, 14px);
+
+    &.generic-btn--main-color {
+        color: #fff;
+
+        i {
+            &::before {
+                color: #fff;
+            }
+        }
+
+        background-color: var(--mainColor);
+    }
+
+    i {
+        margin-inline-end: 4px;
+
+        &::before {
+            font-size: 12px;
+        }
+    }
+}
+
+.multiselect {
+    width: 250px;
+    margin-bottom: 16px;
+    margin-left: auto;
+
+    .multiselect__tags {
+        border: none;
+    }
+
+    .multiselect__option--highlight {
+        background-color: var(--mainColor);
+    }
+
+    * {
+        font-family: $font-regular;
+    }
+
+}
+
+.generic-input {
+    width: 100%;
+    height: 46px;
+    border: 1px solid #ddd;
+    padding: 10px 16px;
+    border-radius: 6px;
+    &.generic-input--error{
+        border: 1px solid var(--error);
+    }
+}
+
+.generic-error {
+    color: var(--error);
+    font-family: $font-medium;
+    @include font-size(16px, 14px, 14px, 12px);
+}

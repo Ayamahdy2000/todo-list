@@ -1,0 +1,19 @@
+.toast-container {
+    &.toast-error{
+      .toast{
+        background: var(--error) !important;
+        color: #fff !important;
+          font-family: $font-semiBold;
+      }
+    }
+    &.toast-success{
+      .toast{
+        background:var(--success) !important;
+        color: #fff !important;
+          font-family: $font-semiBold;
+      }
+    }
+  }
+  
+  
+  

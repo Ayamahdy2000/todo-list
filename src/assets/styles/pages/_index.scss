@@ -1,0 +1,16 @@
+.todo {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    .header{
+        h1{
+            @include font-size(26px,24px,22px,20px);
+            font-family: $font-semiBold;
+        }
+        p{
+            font-family: $font-regular;
+            @include font-size(20px,18px,16px,14px);
+            color: var(--grey);
+        }
+    }
+   
+}

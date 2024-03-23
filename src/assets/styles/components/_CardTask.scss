@@ -1,0 +1,40 @@
+.task{
+    width: 100%;
+    margin-bottom: 16px;
+    background-color: #fff;
+    padding: 16px 24px;
+    border-radius: 6px;
+
+    .form-check{
+        margin-inline-end: 12px;
+        .form-check-input{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+          &:checked{
+            background-color: var(--mainColor);
+            border-color: var(--mainColor);
+          }
+        }
+    }
+    .task__content{
+        h3{
+            @include font-size(24px,22px,20px,18px);
+            font-family: $font-semiBold;
+        }
+        p{
+            font-family: $font-regular;
+            @include font-size(18px,16px,16px,14px);
+            margin-bottom: 6px;
+            color: var(--grey);
+            &.task__date{
+                color: var(--mainColor);
+            }
+
+        }
+       
+    }
+    .task__actions{
+        cursor: pointer;
+    }
+}
